@@ -7,10 +7,10 @@ static int fastio = [](){
         cin.tie(0);
         return 0;
 }();
-/* Attempts of Merging.
 class Solution {
 public:
-    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+    // Attempts of Merging.
+    double findMedianSortedArrays_EZ(vector<int>& nums1, vector<int>& nums2) {// EasyMerging
         vector<int> merged(nums1.size() + nums2.size());
         ios::sync_with_stdio(false);
         cin.tie(0);
@@ -42,12 +42,7 @@ public:
         }
         return 0;
     }
-};
-*/
-
-//Attempts of find_k alg.
-class Solution{
-public:
+    //Attempts of find_k alg.
     int find_k(vector<int> nums1, int start1, vector<int> nums2, int start2, int k){
         //cout << "start1:" << start1 << " start2:" << start2 << " k:" << k <<endl;
         if(nums1.size() <= start1 )
