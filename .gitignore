@@ -3,5 +3,6 @@
 !*.cpp
 !.gitignore
 !*.py
+!README
 .vscode/
 *.out
