@@ -7,18 +7,14 @@ using namespace std;
 class Solution {
 public:
     int maxArea(vector<int>& height) {
-        // Double pointer solution.
-        // Time: 97.9%, Mem: 61.2%
-        int left = 0, right = height.size() - 1;
-        int maxarea = (right - left) * min(height[left], height[right]);
-        int area;
-        while(right > left){
-            area = (right - left) * min(height[left], height[right]);
+        int l = height.size();
+        int left = 0, right = l - 1;
+        int maxarea = min(height[0], height[l-1]) * (l - 1);
+        while(left < right){
             if(height[left] > height[right])
-                -- right;
-            else ++ left;
-            if(area > maxarea)
-                maxarea = area;
+                right --;
+            else left ++;
+            maxarea = max(maxarea, min(height[left], height[right]) * (right - left));
         }
         return maxarea;
     }
