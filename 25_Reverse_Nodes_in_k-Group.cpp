@@ -51,7 +51,7 @@ public:
 };
 
 int main(){
-   initializer_list<int> vals = {1,2,3,4,5,6,7,8,9, 10, 11, 12};
+   initializer_list<int> vals = {1,2,3,4,5,6,7,8,9, 10, 11};
    ListNode* l = new ListNode{*vals.begin()};
    auto p = l;
    for(auto s = vals.begin()+1; s!=vals.end(); ++s){
