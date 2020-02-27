@@ -22,16 +22,16 @@ public:
         }
         int m = l;
         for(int i = l; i < nums.size(); ++i){
-            if(nums[i] > nums[l - 1] && nums[i] < nums[m])
+            if(nums[i] > nums[l - 1] && nums[i] <= nums[m]) // To keep descending order, second '=' must be present
                 m = i;
         }
         swap(nums[l - 1], nums[m]);
-        sort(nums.begin() + l, nums.end());
+        reverse(nums.begin() + l, nums.end()); // replace sort using reverse
     }
 };
 
 int main(void){
-    vector<int> nums {1, 1};
+    vector<int> nums {2, 3, 1, 3, 3};
     Solution().nextPermutation(nums);
     for(const auto& each : nums){
         cout << each << ' ';
