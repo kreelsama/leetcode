@@ -10,7 +10,7 @@ class Solution:
             yield ()
     
     def repeat(self, obj, times):
-        for each in range(times):
+        for _ in range(times):
             yield obj
     
     def letterCombinations(self, digits: str):
