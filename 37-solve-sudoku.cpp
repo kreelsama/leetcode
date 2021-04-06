@@ -1,26 +1,26 @@
 #include<algorithm>
 #include<vector>
+#include<bitset>
 using namespace std;
 
 int tryouts = 0;
 
 class Solution {
 public:
-    bool choices_row[9][9] {true};
-    bool choices_col[9][9] {true};
-    bool choices_box[9][9] {true};
+    vector<bitset<9>> choices_row = vector<bitset<9>>(9, bitset<9>("111111111"));
+    vector<bitset<9>> choices_col = vector<bitset<9>>(9, bitset<9>("111111111"));
+    vector<bitset<9>> choices_box = vector<bitset<9>>(9, bitset<9>("111111111"));
+    // bool choices_row[9][9] {true};
+    // bool choices_col[9][9] {true};
+    // bool choices_box[9][9] {true};
     // bool intersection[9] {false};
 
     int getBoxNum(int row, int col){
         return (row/3)*3 + (col/3);
     }
 
-    void intersect(bool row[9], bool col[9], bool box[9], bool intersection[9]){
-        for(int i = 0; i < 9; ++i){
-            if(row[i] && col[i] && box[i]){
-                intersection[i] = true;
-            }
-        }
+    void intersect(const bitset<9>& row, const bitset<9>& col, const bitset<9>& box, bitset<9>& intersection){
+        intersection = row & col & box;
     }
 
     bool solve(vector<vector<char>>& board, int row, int col){
@@ -40,7 +40,7 @@ public:
         int boxnum = getBoxNum(row, col);
 
         //check available choices
-        bool intersection[9]{false};
+        bitset<9> intersection;
         intersect(choices_row[row], choices_col[col],choices_box[boxnum], intersection);
 
         for(int sel = 1; sel <= 9; sel++){
@@ -68,14 +68,6 @@ public:
     }
 
     void solveSudoku(vector<vector<char>>& board) {
-        // initialization
-        for(int i = 0; i < 9; ++i){
-            for(int j = 0; j < 9; ++j){
-                choices_row[i][j] = 1;
-                choices_col[i][j] = 1;
-                choices_box[i][j] = 1;
-            }
-        }
 
         for(int i = 0; i < 9; ++i){
             for(int j = 0; j < 9; ++j){
