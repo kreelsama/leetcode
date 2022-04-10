@@ -19,7 +19,6 @@ int walk(const vector<int>& stamps){
     for(int i = 0; i < l; ++i){
         cout << max_stamps[i] << ' ';
     }
-
     return *max_element(max_stamps.begin(), max_stamps.end());
 }
 
